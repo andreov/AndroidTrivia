@@ -19,6 +19,7 @@ package com.example.android.navigation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -26,19 +27,21 @@ import com.example.android.navigation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    private  lateinit var drawerLayout: DrawerLayout //для гамбургера
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        drawerLayout = binding.drawerLayout  //для гамбургера
         val navController = this.findNavController(R.id.nav_host_fragment)
-        NavigationUI.setupActionBarWithNavController(this, navController) // стрелка назад в ActionBar
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout) // стрелка назад и гамбургер в ActionBar
         NavigationUI.setupWithNavController(binding.navView, navController)  // drawerMenu
         //val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp()
+        return  NavigationUI.navigateUp(navController, drawerLayout) //navController.navigateUp()  //для гамбургера
     }
     // TODO (01) Create the new TitleFragment
     // Select File->New->Fragment->Fragment (Blank)
