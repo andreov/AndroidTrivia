@@ -34,3 +34,19 @@ class AboutFragment : Fragment() {
         return binding.root
     }
 }
+// если включён только databinding, то в xml пкм root элемент - show context action - dataBinding....
+//private lateinit var mBinding: FragmentAboutBinding
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        mBinding = FragmentAboutBinding.inflate(layoutInflater)
+//
+//        //The complete onClickListener with Navigation
+//        mBinding.playButton.setOnClickListener { view : View ->
+//            view.findNavController().navigate(R.id.action_aboutFragment_to_gameFragment)
+//        }
+//
+//        return  mBinding.root
+//    }
