@@ -20,9 +20,15 @@ class TitleFragment : Fragment() {
         mBinding = FragmentTitleBinding.inflate(layoutInflater)
 
         //The complete onClickListener with Navigation
-        mBinding.playButton.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
+//        mBinding.playButton.setOnClickListener { view : View ->
+//            view.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)}
+
+// для передачи данных между фрагментами с помощью Bundle and SafeArgs
+        mBinding.playButton.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
         }
+
         setHasOptionsMenu(true)  // устанавлиаем меню
         return  mBinding.root
     }
